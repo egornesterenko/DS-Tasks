@@ -9,8 +9,7 @@ void swap(string* a, string* b)
     *b = t;
 }
 
-
-int partition (string arr[], int low, int high)
+int partition (string *arr, int low, int high)
 {
     string pivot = arr[high];
     int i = (low - 1);
@@ -26,7 +25,7 @@ int partition (string arr[], int low, int high)
     return (i + 1);
 }
 
-void quickSort(string arr[], int low, int high)
+void quickSort(string *arr, int low, int high)
 {
     if (low < high)
     {
@@ -36,7 +35,7 @@ void quickSort(string arr[], int low, int high)
     }
 }
 
-void printArray(string arr[], int size)
+void printArray(string *arr, int size)
 {
     int i;
     for (i=0; i < size; i++)
