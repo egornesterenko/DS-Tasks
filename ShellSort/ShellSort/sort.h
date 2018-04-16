@@ -23,5 +23,5 @@ void printArray(string *arr, int size)
 {
     int i;
     for (i=0; i < size; i++)
-    cout << arr[i] << endl;
+        cout << arr[i] << " ";
 }

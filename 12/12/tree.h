@@ -83,6 +83,11 @@ void createTree(Node** root)
             cout << endl;
         }
         
+        if (data < -100 || data > 100) {
+            i = i - 1;
+            continue;
+        }
+        
         *myQueue.front() = createNode(data);
         myQueue.push(&((*myQueue.front())->left));
         myQueue.push(&((*myQueue.front())->right));
@@ -104,11 +109,6 @@ void print (Node *root,int u)
 }
 void print(Node* root)
 {
-    if (root == nullptr)
-    {
-        cout << "NULL" << endl;
-        return;
-    }
     print(root, getHeight(root));
 }
 
@@ -125,23 +125,7 @@ int getHeight(Node* root)
     }
     return level;
 }
-//void searchEl(Node* root, int value)
-//{
-//    queue<Node*> q;
-//    q.push(root);
-//    while (q.front() != nullptr)
-//    {
-//        if (q.front()->data == value)
-//        {
-//            cout << "Node with value " << value << " found" << endl;
-//            return;
-//        }
-//        q.push(q.front()->left);
-//        q.push(q.front()->right);
-//        q.pop();
-//    }
-//    cout << "Node with value " << value << " not found" << endl;
-//}
+
 Node** getEmptyNode(Node** root)
 {
     queue<Node**> myQueue;
@@ -177,23 +161,6 @@ Node** getLastNode(Node** root)
     return result;
 }
 
-//int getSum(int val)
-//{
-//    int sum = 0;
-//    while (val != 0)
-//    {
-//        sum += val % 10;
-//        val /= 10;
-//    }
-//    return abs(sum);
-//}
-
-//void insert5(Node** root, int value)
-//{
-//    Node** temp = getEmptyNode(root);
-//    (*temp) = createNode(value);
-//}
-
 void searchEl6(Node* root)
 {
     queue<Node*> q;
@@ -202,7 +169,7 @@ void searchEl6(Node* root)
     {
         if (is_prime(q.front()->data) && q.front()->data>0)
         {
-            cout << "Node`s module with value " << q.front()->data << " is in the tree " << endl;
+            cout << "Node with value " << q.front()->data << " is in the tree " << endl;
         }
         q.push(q.front()->left);
         q.push(q.front()->right);
@@ -282,7 +249,7 @@ void searchEl12(Node* root)
     {
         if (sqr(q.front()->data))
         {
-            cout << "Node`s module with value " << q.front()->data << " is in the tree " << endl;
+            cout << "Node`s with value " << q.front()->data << " is in the tree " << endl;
         }
         q.push(q.front()->left);
         q.push(q.front()->right);
@@ -323,7 +290,7 @@ void rm12(Node** root, Node** last)
 }
 void rem12(Node** root)
 {
-    int n = getAmount6(*root);
+    int n = getAmount12(*root);
     for (int i = 0; i < n; i++)
         rm12(root, getLastNode(root));
 }
@@ -341,7 +308,7 @@ void runProblem12(Node** root)
     cout << "Finding items" << endl;
     searchEl12(*root);
     cout << "Removing items" << endl;
-    rem6(root);
+    rem12(root);
     print(*root);
     cout << "inserting items" << endl;
     insert12(root);
