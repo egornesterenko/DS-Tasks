@@ -18,6 +18,7 @@ Node** getLastNode(Node**);
 int getSum(int val);
 void searchEl6(Node* root);
 int getAmount6(Node* root);
+void insert(Node** root, int value);
 void insert6(Node** root);
 void rm6(Node** root, Node** last);
 void rem6(Node** root);
@@ -42,9 +43,10 @@ bool is_prime(int x) {
 
 bool sqr(int x) {
     double y = abs(x);
-    if(sqrt(y)==(int)sqrt(y)) return true;
+    if(sqrt(y)==(int)sqrt(y) && sqrt(y)!=0) return true;
     else return false;
 }
+
 
 struct Node
 {
@@ -60,6 +62,7 @@ Node* createNode(int data)
     temp->right = nullptr;
     return temp;
 }
+
 void createTree(Node** root)
 {
     bool random;
@@ -223,15 +226,20 @@ int getAmount6(Node* root)
     }
     return result;
 }
-//void insert11(Node** root, int min, int max)
-//{
-//    int val = 0;
-//    while (val < 13)
-//    {
-//        if (is_prime(val)) insert5(root, val);
-//        val++;
-//    }
-//}
+void insert(Node** root, int value)
+{
+    Node** temp = getEmptyNode(root);
+    (*temp) = createNode(value);
+}
+void insert6(Node** root)
+{
+    int val = 1;
+    while (val < 100)
+    {
+        if (is_prime(val)) insert(root, val);
+        val++;
+    }
+}
 void rm6(Node** root, Node** last)
 {
     if (*root == nullptr || !(*last)) return;
@@ -259,9 +267,9 @@ void runProblem6(Node** root)
     cout << "Removing items" << endl;
     rem6(root);
     print(*root);
-    //    cout << "inserting items" << endl;
-    //    insert11(root, min, max);
-    //    print(*root);
+        cout << "inserting items" << endl;
+        insert6(root);
+        print(*root);
 }
 
 /////////////////TASK 12////////////////////////
@@ -319,6 +327,15 @@ void rem12(Node** root)
     for (int i = 0; i < n; i++)
         rm12(root, getLastNode(root));
 }
+void insert12(Node** root)
+{
+    int val = -99;
+    while (val < 100)
+    {
+        if (sqr(val)) insert(root, val);
+        val++;
+    }
+}
 void runProblem12(Node** root)
 {
     cout << "Finding items" << endl;
@@ -326,7 +343,11 @@ void runProblem12(Node** root)
     cout << "Removing items" << endl;
     rem6(root);
     print(*root);
+    cout << "inserting items" << endl;
+    insert12(root);
+    print(*root);
     
 }
+
 
 
